@@ -73,7 +73,7 @@ The participating institutions are:
 
 
 # License
-TO BE DEFINED (open-source software).
+[MIT License][https://opensource.org/licenses/MIT]
 
 Please cite the original work in:
 1. Sanabria SJ, Antil N, Trieu A, Lutz A, Dahl J, Kamaya A, Anderson K L, ElKaffas, A. The Role of Lung Ultrasound in the Emergency Department with Respect to Clinical Variables, Chest X-ray and Chest Computed Tomography: a Machine Learning Study of Patient Outcomes. 
