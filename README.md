@@ -65,7 +65,7 @@ Anderson K L^{c},
 ElKaffas A^{b},
 
 The participating institutions are: 
-{a} Deusto Institute of Technology, University of Deusto/ IKERBASQUE, Basque Foundation for Science, Bilbao, Spain.
+{a} Deusto Institute of Technology, University of Deusto/ IKERBASQUE, Basque Foundation for Science, Bilbao, Spain. 
 {b} Department of Radiology, Stanford University, 3155 Porter Drive, Stanford, CA 94305 USA.
 {c} Department of Emergency Medicine, Stanford University, 900 Welch Road Ste. 350, Palo Alto, CA 94304 USA.
 
@@ -73,7 +73,7 @@ The participating institutions are:
 
 
 # License
-TO BE DEFINED (open-source software).
+[MIT License][https://opensource.org/licenses/MIT]
 
 Please cite the original work in:
 1. Sanabria SJ, Antil N, Trieu A, Lutz A, Dahl J, Kamaya A, Anderson K L, ElKaffas, A. The Role of Lung Ultrasound in the Emergency Department with Respect to Clinical Variables, Chest X-ray and Chest Computed Tomography: a Machine Learning Study of Patient Outcomes. 
