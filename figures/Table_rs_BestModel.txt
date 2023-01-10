@@ -1,0 +1,60 @@
++-------------------+-------------------+-------------------+------------------+
+|       Data        |     Hospital      | SARS_CoV_2_positi |     2-month      |
+|   input/Outcome   |     admission     |        ve         |    mortality     |
++-------------------+-------------------+-------------------+------------------+
+|                   | GaussianProcessCl |                   |                  |
+|                   | assifier(kernel=1 |    SVC(C=100,     |                  |
+|                   | **2 * Matern(leng | kernel='sigmoid', |  BernoulliNB(),  |
+|     Clinical      |    th_scale=1,    | random_state=0),  |     Id: 117      |
+|                   |     nu=1.5),      |      Id: 21       |                  |
+|                   | random_state=0),  |                   |                  |
+|                   |      Id: 41       |                   |                  |
++-------------------+-------------------+-------------------+------------------+
+|                   |                   |                   | GradientBoosting |
+|                   |                   |                   | Classifier(learn |
+|                   |                   |                   |   ing_rate=1,    |
+|        LUS        | MultinomialNB(),  |  BernoulliNB(),   |  max_depth=15,   |
+|                   |      Id: 115      |      Id: 117      | n_estimators=10, |
+|                   |                   |                   | random_state=0,  |
+|                   |                   |                   | subsample=0.5),  |
+|                   |                   |                   |     Id: 176      |
++-------------------+-------------------+-------------------+------------------+
+|                   |                   |                   | DecisionTreeClas |
+|                   |  ComplementNB(),  |  ComplementNB(),  | sifier(max_depth |
+|       X-ray       |      Id: 116      |      Id: 116      |       =5,        |
+|                   |                   |                   | random_state=0), |
+|                   |                   |                   |      Id: 44      |
++-------------------+-------------------+-------------------+------------------+
+|                   |                   |                   | GradientBoosting |
+|                   |                   | RandomForestClass | Classifier(learn |
+|                   |                   | ifier(n_estimator |   ing_rate=1,    |
+|        CT         |  BernoulliNB(),   |       s=10,       |   max_depth=5,   |
+|                   |      Id: 117      | random_state=0),  | n_estimators=80, |
+|                   |                   |      Id: 52       | random_state=0,  |
+|                   |                   |                   | subsample=0.5),  |
+|                   |                   |                   |     Id: 173      |
++-------------------+-------------------+-------------------+------------------+
+|                   | MLPClassifier(alp | MLPClassifier(alp |                  |
+|                   | ha=0.01, hidden_l | ha=0.001, hidden_ |                  |
+|                   |  ayer_sizes=(10,  | layer_sizes=(20,) |  BernoulliNB(),  |
+|   Clinical+LUS    |      5, 2),       | , max_iter=1000,  |     Id: 117      |
+|                   |  max_iter=1000,   | random_state=0),  |                  |
+|                   | random_state=0),  |      Id: 80       |                  |
+|                   |      Id: 89       |                   |                  |
++-------------------+-------------------+-------------------+------------------+
+|                   | RandomForestClass |                   | GradientBoosting |
+|                   | ifier(max_depth=1 |    SVC(C=100,     | Classifier(max_d |
+|                   |        0,         |    gamma=0.5,     |     epth=30,     |
+|  Clinical+X-ray   | n_estimators=20,  | random_state=0),  | n_estimators=30, |
+|                   | random_state=0),  |      Id: 32       | random_state=0,  |
+|                   |      Id: 61       |                   | subsample=0.5),  |
+|                   |                   |                   |     Id: 187      |
++-------------------+-------------------+-------------------+------------------+
+|                   | MLPClassifier(alp | AdaBoostClassifie |                  |
+|                   | ha=0.01, hidden_l | r(learning_rate=0 | DecisionTreeClas |
+|                   |  ayer_sizes=(20,  |        .5,        | sifier(max_depth |
+|    Clinical+CT    |    10, 5, 2),     | n_estimators=20,  |       =5,        |
+|                   |  max_iter=1000,   | random_state=0),  | random_state=0), |
+|                   | random_state=0),  |      Id: 101      |      Id: 44      |
+|                   |      Id: 93       |                   |                  |
++-------------------+-------------------+-------------------+------------------+

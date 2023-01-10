@@ -1,0 +1,19 @@
+\begin{table}
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			Outcome & Comparison
+X-ray/LUS & Comparison
+CT/LUS \\
+			\hline
+			Hospital AdmissionOR (p-value) & 1.22 (0.64) & 2.71 (0.03) \\
+			\hline
+			2-month MortalityOR (p-value) & 3.08 (0.00) & 2.14 (0.13) \\
+			\hline
+			Positive SARS-CoV-2OR (p-value) & 0.09 (0.00) & 2.00 (0.69) \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{An example table.}
+	\label{table:example_table}
+\end{table}

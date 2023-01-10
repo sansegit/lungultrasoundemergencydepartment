@@ -1,0 +1,14 @@
+             2 Correct,       2 Incorre
+1 Correct            90                5
+1 Incorre            53                8
+[[90.  5.]
+ [53.  8.]]
+No elements: 156
+Contigency table in proportions (%)
+             2 Correct,       2 Incorre
+1 Correct         0.577            0.032
+1 Incorre         0.340            0.051
+Odd ratios OR = 1Correct_2Incorre/1Incorre_1Correct
+OR =      0.094
+pvalue      3.496476719266894e-11
+statistic   5.0

@@ -1,92 +1,80 @@
-# LungUltrasoundEmergencyDepartment
+# The Role of Lung Ultrasound in the Emergency Department with Respect to Clinical Variables, Chest X-ray and Chest Computed Tomography: a Machine Learning Study of Patient Outcomes
+Supporting code and data for publication.
 
 
+# Description
+The code provides an objective comparison of the capability of different sets of features obtained from clinical and imaging reports to predict clinical outcomes.
 
-## Getting started
+Based on a dataframe stored in a *.csv file, the code performs machine learning with a stratified cross-validation approach.
+Each row of the *.csv file corresponds to a separate patient instance. Each column contains features used for training the model (binary, integer), together with prediction labels (binary).
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+The model evaluates best performing machine learning architectures for a set of input features with respect to  binary prediction outcomes.
+By performing a comprehensive search of machine learning architectures and hyperparameters, the best performing architecture is identified for each input feature set.
+Models include: K-Neighbors, Bayes, Support Vector Machines, Decision Trees, Random Forests, Multi-layer Perceptron, Gaussian Processes, Ada Boost, Quadratic Discriminant Analysis, Logistic Regression, Ridge Classifier, Bagged Decision Trees and Stochastic Gradient Boosting. Hyperparameter optimization is performed with grid search, with 192 models tested in total per feature set.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+The code allows comparing predictive performance for different input data feature sets, applying a consistent data split in all cases.
+For each input data feature set, a best performing machine learning architecture is identified. 
+The code allow tracing one-by-one prediction outcomes for a specific patient instance based on different feature sets.
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/SergioJSanabria/lungultrasoundemergencydepartment.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/SergioJSanabria/lungultrasoundemergencydepartment/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Unpaired (Spearman's rank correlation coefficient and AUC expressed in terms of mean and standard deviation for cross-validation set) 
+and paired (McNemar method) statistics allow assessing performance difference among different feature sets.
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+The code runs in Python 3.8.5 using the open-source machine learning library Scikit-learn 1.02., together with additional libraries NumPy, Pandas, Matplotlib and Plotly for data structure manipulation and results visualization.
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Run ./RUNME.py to run the code.
+The code is executed in a sequence of 5 subsequent phases, which can be activated/deactivated in config.py: 
+- PHASE_0: Calculates correlations between outcomes and individual features (general)
+- PHASE_1: Trains machine learning models (general)
+- PHASE_2: Determines best machine learning model for each feature set, computes extended statistics, including confusion matrices and AUROC (requires output of PHASE_2 to run, general) (requires output of PHASE_1_ to run)
+- PHASE_3: Performs McNemar paired comparison test (requires output of PHASE_2 to run, general)
+- PHASE_4: Generates results figures for manuscript (requires output of PHASE_3 and PHASE_2 to run, specific to dataset)
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Other important files:
+* config.py contains configuration parameters
+* models.py contains model definitions
+* imports.py imports necessary libraries for execution
+* stat_funs.py contains utility functions for statistics calculation
+* lung_ultrasound.py specific processing applied to the dataset example
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+# Data
+In the reference citation, the code is applied to predict clinical outcomes (hospital admission, 2-month mortality and positive SARS-CoV-2 test) in patients presenting with acute respiratory distress ARD in the emergency department (ED).
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+For this purpose, feature sets obtained from electrical medical reports (EMR), together with reports of lung ultrasound (LUS), chest X-ray and computed tomography (CT) are compared.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+The code compares performance differences between each individual set of features and between combinations of EMR with either LUS, X-ray or CT features.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+The *.csv file with data utilized is provided in /data
 
-## License
-For open source projects, say how it is licensed.
+Comprehensive results are generated in /results
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Manuscript figures and tables are generated in /figures
+
+
+# Authors and acknowledgment
+The author list for this work is:
+Sanabria SJ^{a,b,*},
+Antil N^{b},
+Trieu A^{b},
+Lutz A^{b},
+Dahl J^{b},
+Kamaya A^{b},
+Anderson K L^{c},
+ElKaffas A^{b},
+
+The participating institutions are: 
+{a} Deusto Institute of Technology, University of Deusto/ IKERBASQUE, Basque Foundation for Science, Bilbao, Spain.
+{b} Department of Radiology, Stanford University, 3155 Porter Drive, Stanford, CA 94305 USA.
+{c} Department of Emergency Medicine, Stanford University, 900 Welch Road Ste. 350, Palo Alto, CA 94304 USA.
+
+*Corresponding author: E-mail: sanse@stanford.edu
+
+
+# License
+TO BE DEFINED (open-source software).
+
+Please cite the original work in:
+1. Sanabria SJ, Antil N, Trieu A, Lutz A, Dahl J, Kamaya A, Anderson K L, ElKaffas, A. The Role of Lung Ultrasound in the Emergency Department with Respect to Clinical Variables, Chest X-ray and Chest Computed Tomography: a Machine Learning Study of Patient Outcomes. 
+
